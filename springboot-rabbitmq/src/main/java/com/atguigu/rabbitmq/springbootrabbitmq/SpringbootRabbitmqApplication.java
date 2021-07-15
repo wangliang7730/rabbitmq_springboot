@@ -8,6 +8,7 @@ public class SpringbootRabbitmqApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootRabbitmqApplication.class, args);
+        System.out.println("开始启动了");
     }
 
 }
