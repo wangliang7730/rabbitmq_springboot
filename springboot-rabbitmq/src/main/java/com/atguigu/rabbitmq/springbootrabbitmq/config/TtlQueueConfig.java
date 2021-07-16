@@ -73,6 +73,7 @@ public class TtlQueueConfig {
     @Bean
     public Binding queueABindingX(@Qualifier("queueA") Queue queueA,
                                   @Qualifier("xExchange")DirectExchange xExchange){
+
         return BindingBuilder.bind(queueA).to(xExchange).with("XA");
     }
     //绑定
