@@ -10,6 +10,7 @@ public class SpringbootRabbitmqApplication {
         SpringApplication.run(SpringbootRabbitmqApplication.class, args);
         System.out.println("开始启动了");
         System.out.println("fenzhi2已经启动");
+        System.out.println("fenzhi3已经启动");
     }
 
 }
