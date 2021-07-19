@@ -30,4 +30,15 @@ public class SendMsgController {
         rabbitTemplate.convertAndSend("X","XA","消息来自ttl为10s的队伍:"+message);
         rabbitTemplate.convertAndSend("X","XB","消息来自ttl为40s的队伍:"+message);
     }
+
+    @GetMapping("/sendExpirationMsg/{message}/{ttlTime}")
+    public void sendMsg(@PathVariable("message")String message,
+                        @PathVariable("ttlTime")String ttlTime){
+        log.info("当期时间：{},发送一条信息给两个TTL对列：{}",new Date().toString(),message);
+        rabbitTemplate.convertAndSend("X","XC",message,msg->{
+            //发送消息的时候，延迟时长
+        msg.getMessageProperties().setExpiration(ttlTime);
+        return msg;
+        });
+    }
 }
