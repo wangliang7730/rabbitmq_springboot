@@ -48,8 +48,16 @@ public class Consumer01 {
         channel.queueBind(NORMAL_QUEUE,NORMAL_EXCHANGE,"zhangsan");
         //绑定死信的交换机与死信的队列
         channel.queueBind(DEAD_QUEUE,DEAD_EXCHANGE,"lisi");
-
+        System.out.println("等待接收消息.....");
+        
         DeliverCallback deliverCallback=(consumerTag,message)->{
+            String msg=new String(message.getBody(),"UTF-8");
+            if(msg.equals("info5")){
+                System.out.println("Consumer01接收消息是:"+msg+":此消息是被C1拒绝的");
+                channel.basicReject(message.getEnvelope().getDeliveryTag(),);
+            }else{
+                System.out.println("Consumer01接收的消息是:"+msg);
+            }
             System.out.println(new String(message.getBody()));
         };
         channel.basicConsume(NORMAL_QUEUE,true,deliverCallback,consumerTag->{});
