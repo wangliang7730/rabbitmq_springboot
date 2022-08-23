@@ -39,7 +39,7 @@ public class Consumer01 {
         arguments.put("x-dead-letter-exchange",DEAD_EXCHANGE);
         arguments.put("x-dead-letter-routing-key","lisi");
         //设置正常队列的长度
-        arguments.put("x-max-length",6);
+        //arguments.put("x-max-length",6);
         
         //声明死信队列
         channel.queueDeclare(DEAD_QUEUE,false,false,false,arguments);
