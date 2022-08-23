@@ -46,7 +46,7 @@ public class Consumer01 {
         //绑定普通的交换机与普通的队列
         channel.queueBind(NORMAL_QUEUE,NORMAL_EXCHANGE,"zhangsan");
         //绑定死信的交换机与死信的队列
-        channel.queueBind(DEAD_QUEUE,DEAD_EXCHANGE,"zhangsan");
+        channel.queueBind(DEAD_QUEUE,DEAD_EXCHANGE,"lisi");
 
         DeliverCallback deliverCallback=(consumerTag,message)->{
             System.out.println(new String(message.getBody()));
