@@ -31,6 +31,7 @@ public class Consumer01 {
         channel.exchangeDeclare(DEAD_EXCHANGE, BuiltinExchangeType.DIRECT);
         //声明普通队列
         channel.queueDeclare(NORMAL_QUEUE,false,false,false,null);
+        
         /* 在生产者设置更灵活可以随意修改过期时间,消费者这边设置不能修改
         Map<String,Object> arguments=new HashMap<>();
         arguments.put("x-message-ttl",100000);
