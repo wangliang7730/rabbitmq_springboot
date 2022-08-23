@@ -32,12 +32,13 @@ public class Consumer01 {
         //声明普通队列
         channel.queueDeclare(NORMAL_QUEUE,false,false,false,null);
         
-        /* 在生产者设置更灵活可以随意修改过期时间,消费者这边设置不能修改
+        
         Map<String,Object> arguments=new HashMap<>();
-        arguments.put("x-message-ttl",100000);
+        //在生产者设置更灵活可以随意修改过期时间,消费者这边设置不能修改
+        //arguments.put("x-message-ttl",100000);
         arguments.put("x-dead-letter-exchange",DEAD_EXCHANGE);
         arguments.put("x-dead-letter-routing-key","lisi");
-        */
+        
         
         //声明死信队列
         channel.queueDeclare(DEAD_QUEUE,false,false,false,arguments);
