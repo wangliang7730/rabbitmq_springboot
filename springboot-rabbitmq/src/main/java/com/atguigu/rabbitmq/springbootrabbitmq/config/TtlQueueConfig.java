@@ -101,7 +101,8 @@ public class TtlQueueConfig {
     }
     //绑定
     @Bean
-    public Binding queueCBindingC(@Qualifier("queueC")Queue queueC,
+    //public Binding queueCBindingC(@Qualifier("queueC")Queue queueC,
+    public Binding queueCBindingX(@Qualifier("queueC")Queue queueC,
                                   @Qualifier("xExchange")DirectExchange xExchange){
         return BindingBuilder.bind(queueC).to(xExchange).with("XC");
     }
