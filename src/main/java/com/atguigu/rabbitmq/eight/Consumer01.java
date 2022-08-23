@@ -54,7 +54,7 @@ public class Consumer01 {
             String msg=new String(message.getBody(),"UTF-8");
             if(msg.equals("info5")){
                 System.out.println("Consumer01接收消息是:"+msg+":此消息是被C1拒绝的");
-                channel.basicReject(message.getEnvelope().getDeliveryTag(),);
+                channel.basicReject(message.getEnvelope().getDeliveryTag(),false);//false表示不重新放入队列，直接进入死信队列。
             }else{
                 System.out.println("Consumer01接收的消息是:"+msg);
             }
