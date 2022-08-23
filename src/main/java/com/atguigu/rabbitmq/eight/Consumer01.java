@@ -57,9 +57,11 @@ public class Consumer01 {
                 channel.basicReject(message.getEnvelope().getDeliveryTag(),false);//false表示不重新放入队列，直接进入死信队列。
             }else{
                 System.out.println("Consumer01接收的消息是:"+msg);
+                channel.basicAck(message.getEnvelope().getDeliveryTag(),false); //false不批量
             }
             System.out.println(new String(message.getBody()));
         };
-        channel.basicConsume(NORMAL_QUEUE,true,deliverCallback,consumerTag->{});
+        //channel.basicConsume(NORMAL_QUEUE,true,deliverCallback,consumerTag->{});  //true自动Ack，false不自动Ack
+        channel.basicConsume(NORMAL_QUEUE,false,deliverCallback,consumerTag->{});  //true自动Ack，false不自动Ack
     }
 }
